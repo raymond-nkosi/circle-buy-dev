@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="dmxAppConnect/dmxAppConnect.js"></script>
+    <meta charset="UTF-8">
+    <title>Untitled Document</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+    <link rel="stylesheet" href="Framework7/5/css/framework7.bundle.min.css" />
+    <script src="cordova.js"></script>
+    <script src="Framework7/5/js/framework7.bundle.min.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="dmxAppConnect/dmxFramework7/dmxFramework7.js" defer=""></script>
+    <link rel="stylesheet" href="dmxFramework7_icons/css/framework7-icons.css" />
+
+    <link rel="stylesheet" href="dmxAppConnect/dmxAnimateCSS/animate.min.css" />
+    <script src="dmxAppConnect/dmxAnimateCSS/dmxAnimateCSS.js" defer=""></script>
+    <link rel="stylesheet" href="dmxAppConnect/dmxPreloader/dmxPreloader.css" />
+    <script src="dmxAppConnect/dmxPreloader/dmxPreloader.js" defer=""></script>
+    <script src="dmxAppConnect/dmxCharts/Chart.min.js" defer=""></script>
+    <script src="dmxAppConnect/dmxCharts/dmxCharts.js" defer=""></script>
+    <link rel="stylesheet" href="dmxAppConnect/dmxNotifications/dmxNotifications.css" />
+    <script src="dmxAppConnect/dmxNotifications/dmxNotifications.js" defer=""></script>
+    <link rel="stylesheet" href="dmxAppConnect/dmxSlideshow/dmxSlideshow.css" />
+    <script src="dmxAppConnect/dmxSlideshow/dmxSlideshow.js" defer=""></script>
+    <link rel="stylesheet" href="dmxAppConnect/dmxSlideshow/themes/default.css" />
+    <script src="dmxAppConnect/dmxFormatter/dmxFormatter.js" defer=""></script>
+    <script src="dmxAppConnect/dmxDataTraversal/dmxDataTraversal.js" defer=""></script>
+    <script src="dmxAppConnect/dmxDatastore/dmxDatastore.js" defer=""></script>
+    <script src="dmxAppConnect/dmxSwiper/dmxSwiper.js" defer=""></script>
+    <script src="dmxAppConnect/dmxSwiper/swiper.min.js" defer=""></script>
+    <link rel="stylesheet" href="dmxAppConnect/dmxSwiper/themes/default.css" />
+</head>
+
+<body is="dmx-app" id="index">
+    <dmx-api-action id="WooCommerce" url="https://circlebuy.sites.c-mple.com/wp-json/wc/v3/products?consumer_key=ck_3b13ce976e0faeb6e62ed0ac625f1b5d44424639&amp;consumer_secret=cs_86b8d2fc2367d52bee41f2c8007e0ccb30b2c2cc"></dmx-api-action>
+    <dmx-array id="arr1" dmx-bind:items="app.main.index.repeat1[0].images"></dmx-array>
+    <div id="app" is="dmx-f7-app">
+        <!-- Statusbar overlay -->
+        <div class="statusbar"></div>
+
+        <!-- Your main view, should have "view-main" class -->
+        <div id="main" class="view view-main rf et">
+            <!-- Initial Page, "data-name" contains page name -->
+            <div id="index" class="page ex df" data-name="index">
+
+                <!-- Top Navbar -->
+                <div class="navbar">
+                    <div class="navbar-bg"></div>
+                    <div class="navbar-inner style10">
+                        <div class="title sliding">Awesome App</div>
+                    </div>
+                </div>
+
+                <!-- Toolbar -->
+                <div class="toolbar toolbar-bottom">
+                    <div class="toolbar-inner">
+                        <img width="30" height="30">
+                        <img width="30" height="30">
+                        <img width="30" height="30" class="style6">
+                    </div>
+                </div>
+
+                <!-- Scrollable page content -->
+                <div class="page-content wappler-block">
+                    <div class="row rdtd drtrt dtdrtdrt">
+                        <div class="col-auto pccols1 pccols2 pccols3" dmx-repeat:repeat1="WooCommerce.data">
+                            <div class="card card-expandable cuss storm">
+                                <div class="card-content">
+                                    <div class="card-content-inner">
+                                        <div is="dmx-swiper" id="swiper1" dmx-bind:slides="images.src" dmx-bind:initial-slide="images[0].src"></div>
+                                        <p dmx-text="'images.map(({ src }) => src)'">Content...</p>
+                                        <img width="100%" height="150" src="" dmx-bind:src="images[0].src" class="style14" data-swiper-parallax="5" />
+
+
+                                        <p dmx-html="short_description">Content...</p><a href="#" class="button button-fill tess ting">Button</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
